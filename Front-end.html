@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<meta charset="utf-8">
+</head>
+<body>
+
+
+<div data-role="page" id="pageone" >
+<div class="ui-btn-active" data-role="header">
+<h1>Find Events</h1> 
+</div>
+
+<div class="ui-body-c" data-role="header">
+<h1>Events type</h1> <a href="#more" class="ui-btn-right" data-role="button">more...</a>
+</div>
+
+<div data-role="content">
+   <a href="#pageone" data-role="button" data-inline="true">Badminton</a>
+  <a href="#pageone" data-role="button" data-inline="true">Basketball</a>
+  <a href="#pageone" data-role="button" data-inline="true">Football</a>
+  <a href="#pageone" data-role="button" data-inline="true">Rugby</a>
+  <a href="#pageone" data-role="button" data-inline="true">Table Tennis</a>
+  <a href="#pageone" data-role="button" data-inline="true">Tennis</a>
+  <a href="#pageone" data-role="button" data-inline="true">Cycling</a>
+  <a href="#pageone" data-role="button" data-inline="true">Squash</a>
+  <a href="#pageone" data-role="button" data-inline="true">Cricket</a>
+ 
+ 
+ </div>
+ 
+ <div data-role="content">
+    <form method="post" action="demoform.asp">
+      <div data-role="fieldcontain">
+        <label for="bday">Date：</label>
+        <input type="date" name="bday" id="bday">
+        <label for="bday">Start Time：</label>
+        <input type="time" name="time" id="time">
+        <label for="bday">End Time：</label>
+        <input type="time" name="time" id="time">
+      </div>
+      <input type="submit" data-inline="true" value="Search">
+    </form>
+  </div>
+
+  <div data-role="footer" data-position="fixed" data-id="footernav" data-theme="c">  
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Find Events</a></li>
+        <li><a href="#pagetwo" data-icon="arrow-r">Create Events</a></li>
+        <li><a href="#pagethree" data-icon="home">Friends</a></li>
+<li><a href="#pagefour" data-icon="home">Profile</a></li>
+      </ul>
+    </div>
+  </div> 
+</div> 
+
+<div data-role="page" id="pagetwo">
+<div data-role="header" data-position="fixed" data-id="headernav" data-theme = "b">
+    <h1>Create an Event</h1>
+    
+    </div> 
+    <div data-role="header" data-id="headernav" data-theme = "c">
+    <h1>Events type</h1>
+    <a href="#" data-role="button" class="ui-btn-right" >more...</a>
+    
+    </div> 
+    
+  <div data-role="content">
+  
+  <a href="#pageone" data-role="button" data-inline="true">Badminton</a>
+  <a href="#pageone" data-role="button" data-inline="true">Basketball</a>
+  <a href="#pageone" data-role="button" data-inline="true">Football</a>
+  <a href="#pageone" data-role="button" data-inline="true">Rugby</a>
+  <a href="#pageone" data-role="button" data-inline="true">Table Tennis</a>
+  <a href="#pageone" data-role="button" data-inline="true">Tennis</a>
+  <a href="#pageone" data-role="button" data-inline="true">Cycling</a>
+  <a href="#pageone" data-role="button" data-inline="true">Squash</a>
+  <a href="#pageone" data-role="button" data-inline="true">Cricket</a>
+    <br>
+	<br>
+    <a> Time and date</a>
+    <div data-role="content">
+    <form method="post" action="demoform.asp">
+    <div data-role="fieldcontain">
+    <label for="fullname">Events name</label>
+    <input type="text" name="fullname" id="fullname" placeholder="Giving an event name..">  
+    <br>
+    
+    <label for="bday">Date：</label>
+    <input type="date" name="bday" id="bday" placeholder="YY/MM/DD..">
+   <br>
+    <br>
+    <div data-role="rangeslider">
+    <label for="time-min">Time range:</label>
+    <input type="range" name="time-min" id="time-min" value="0" min="0" max="24">
+    <label for="time-max">Time range</label>
+    <input type="range" name="time-max" id="time-max" value="24" min="0" max="24">
+    
+    </div>
+    <br>
+     <div data-role="rangeslider">
+    <label for="time-min">Participants:</label>
+    <input type="range" name="part-min" id="part-min" value="1" min="1" max="24">
+    <label for="time-max">Participants</label>
+    <input type="range" name="part-max" id="part-max" value="24" min="1" max="24">
+    
+    </div>
+    
+    </div>
+    
+    <br>
+    <input type="submit" data-inline="true" value="Create">
+</form>
+  </div>
+  </div>
+
+  <div data-role="footer" data-position="fixed" data-id="footernav" data-theme="c">  
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#pageone"  data-icon="home">Find Events</a></li>
+        <li><a href="#" class="ui-btn-active ui-state-persist"data-icon="arrow-r">Create Events</a></li>
+        <li><a href="#pagethree" data-icon="home">Friends</a></li>
+<li><a href="#pagefour" data-icon="home">Profile</a></li>
+      </ul>
+    </div>
+  </div>
+</div> 
+
+
+<div data-role="page" id="pagethree">
+<div data-role="header" data-position="fixed" data-id="headernav" data-theme = "b">
+    <h1>Friends</h1>
+    
+  </div>
+
+  <div data-role="content">
+    <p>本例设有 ui-btn-active 类，请注意首页按钮时突出显示的（已选）。</p>
+    <p>请点击页面二按钮，看看会发生什么。</p>
+  </div>
+
+  <div data-role="footer" data-position="fixed" data-id="footernav" data-theme="c">  
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#pageone" data-icon="home">Find Events</a></li>
+        <li><a href="#pagetwo" data-icon="arrow-r">Create Events</a></li>
+         <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Friends</a></li>
+<li><a href="#pagefour" data-icon="home">Profile</a></li>
+      </ul>
+    </div>
+  </div> 
+</div> 
+
+<div data-role="page" id="pagefour">
+<div data-role="header" data-position="fixed" data-id="headernav" data-theme = "b">
+ <h1>TeamUp Login</h1>
+		</div>
+		<div data-role="content">
+		<form method="post" action="demoform.asp">
+		<div data-role="fieldcontain">
+		<br>
+		<br>
+		<br>
+<!-- 		Account：<input type="text" name="Account" placeholder="TeamUpID" size="10" data-inline="true"> -->
+		<label for="account">Account：</label>
+		<input type="text" data-inline="true" name="account" id="account">
+		<br>
+		<br>
+<!-- 		Password：<input type="password" value="" name="Password" size="10" data-inline="true"> -->
+		<label for="password">Password：</label>
+		<input type="password" data-inline="true" name="password" id="password">
+		<br>
+		<br>
+		</div>
+		<a href="#pageone" data-role="button" data-inline="true">submit</a>
+		<a href="#pagefive" data-role="button" data-inline="true">register</a>
+		<input type="reset" data-inline="true" value="reset">
+		</form>
+		</div>
+
+
+
+  </div>
+
+  <div data-role="footer"  data-theme="c">  
+    <div data-role="navbar" >
+      <ul>
+      <li><a href="#pageone" data-icon="home">Find Events</a></li>
+        <li><a href="#pagetwo" data-icon="arrow-r">Create Events</a></li>
+         <li><a href="#pagethree" data-icon="home">Friends</a></li>
+       <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Profile</a></li>
+   </ul>
+    </div>
+  </div> 
+
+<div data-role="page" id="pagefive">
+		<div data-role="header" data-theme="b">
+			<h1>TeamUp Profile</h1>
+		</div>
+		<div data-role="content">
+		<form method="post" action="demoform.asp">
+		<div data-role="fieldcontain">		
+			<label for="firstname">First Name：</label>
+			<input type="text" name="firstname" id="firstname">
+			<br>
+			<br>
+			<label for="lastname">Last Name：</label>
+			<input type="text" name="lastname" id="lastname">
+			<br>
+			<br>
+			<legend>gender：</legend>
+			<label for="male">male</label>
+			<input type="radio" name="gender" id="male" value="male">
+			<label for="female">female</label>
+			<input type="radio" name="gender" id="female" value="female">	
+			<br>
+			<br>
+			<br>
+			<label for="info">personal Introducation：</label>
+			<textarea name="addinfo" id="info"></textarea>
+			<br>
+			<br>
+			<label for="sportstype">Favorite Sports: </label>
+			<select name="sportstype" id = "sportstype" multiple="multiple" data-native-menu="false">
+				<option value="soccer">soccer</option>
+				<option value="football">football</option>
+				<option value="rugby">rugby</option>
+				<option value="rugby">tennis</option>
+				<option value="rugby">table tennis</option>
+				<option value="rugby">badminton</option>
+				<option value="rugby">basketball</option>
+				<option value="rugby">volleyball</option>
+				<option value="rugby">ice hockey</option>
+				<option value="rugby">squash</option>
+				<option value="rugby">hockey ball</option>
+				<option value="rugby">golf</option>
+			</select>
+			<br>
+			<br>
+			<legend>Occupation：</legend>
+			<label for="student">student</label>
+			<input type="radio" name="occupation" id="student" value="student">
+			<label for="staff">staff</label>
+			<input type="radio" name="occupation" id="staff" value="staff">	
+		</div>
+			<br>
+			<br>
+			<a href="#pagefour" data-role="button" data-inline="true">Submit</a>
+			<input type="reset" data-inline="true" value="reset">
+		</form>
+		</div>
+	</div> 
+
+</body>
+</html>
+
