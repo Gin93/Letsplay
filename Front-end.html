@@ -8,129 +8,351 @@
 <script
 	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <meta charset="utf-8">
+<style>
+.sports_picture{
+	max-width: 80px;
+	}
+.picture{
+	max-width:40px;	
+	}
+</style>
+<script type="text/javascript" language="javascript"> 
+function selectAllDels() 
+{ 
+	var allCheckBoxs = document.getElementsByName("sport_find"); 
+	var desc = document.getElementById("allChecked"); 
+	var selectOrUnselect=false; 
+	for(var i = 0; i < allCheckBoxs.length; i ++ ) 
+	{ 
+		if(allCheckBoxs[i].checked){ 
+			selectOrUnselect=true; 
+			break; 
+		} 
+	}
+	if (selectOrUnselect) 
+	{ 
+		_allUnchecked(allCheckBoxs); 
+		}
+		else 
+		{ 
+			_allchecked(allCheckBoxs); 
+			} 
+} 
+function _allchecked(allCheckBoxs){ 
+for(var i = 0; i < allCheckBoxs.length; i ++ ) 
+{ 
+allCheckBoxs[i].checked = true; 
+} 
+} 
+function _allUnchecked(allCheckBoxs){ 
+for(var i = 0; i < allCheckBoxs.length; i ++ ) 
+{ 
+allCheckBoxs[i].checked = false; 
+} 
+} 
+function unselectRadio()
+{
+	var allCheckBoxs = document.getElementsByName("sport_create");
+	var desc = document.getElementById("allChecked");
+	var selectOrUnselect=false;
+	for(var i=0;i < allCheckBoxs.length; i ++)
+	{
+		if(allCheckBoxs[i].checked){
+			allCheckBoxs[i].checked = false; 
+			}
+		}
+	}
+</script> 
+
 </head>
-<body>
-	<div data-role="page" id="find_index">
+<body >
+<div data-role="page" id="find_index" >
 		<div class="ui-btn-active" data-role="header">
 			<h1>Find Events</h1>
 		</div>
 
 		<div class="ui-body-c" data-role="header">
-			<h1>Events type</h1>
-			<a href="#more" class="ui-btn-right" data-role="button">more...</a>
+			<h1>Events type</h1>			
 		</div>
-
-		<div data-role="content">
-			<a href="#find_index" data-role="button" data-inline="true">Badminton</a>
-			<a href="#find_index" data-role="button" data-inline="true">Basketball</a>
-			<a href="#find_index" data-role="button" data-inline="true">Football</a>
-			<a href="#find_index" data-role="button" data-inline="true">Rugby</a>
-			<a href="#find_index" data-role="button" data-inline="true">Table
-				Tennis</a>
-			<a href="#find_index" data-role="button" data-inline="true">Tennis</a>
-			<a href="#find_index" data-role="button" data-inline="true">Cycling</a>
-			<a href="#find_index" data-role="button" data-inline="true">Squash</a>
-			<a href="#find_index" data-role="button" data-inline="true">Cricket</a>
-
-
-		</div>
-
-		<div data-role="content">
-			<form method="post" action="find_process.php">
-				<div data-role="fieldcontain">
-											
-						<label for="date_event">Date：</label>
-						<input type="date" name="date_event" id="date_event">
-						<br>                         
-						<label for="time_start">Start Time：</label>
-						<input type="time" name="time" id="time_start">
-						<label for="time_end">End Time：</label>
-						<input type="time" name="time" id="time_end">
-                        <br>
-				</div>
-				<input type="submit" data-inline="true" value="Search">
-			</form>
-		</div>
-
-		<div data-role="footer" data-position="fixed" data-id="footernav"
+        <div data-role="content" style="text-align:center">
+        <form method="post" action="sport_find.php">
+        <table border="0px" width="100%" style="font-size:0.8em;color:rgb(66,134,245)">
+        <tr>
+        	<td width="25%"> 
+            <label for ="badminton_f"> <img src="badminton.png" class="sports_picture" width="50%";><br/>Badminton</label>    <br/>
+            <input type="checkbox" data-mini="true" data-role="none" value="badminton" id="badminton_f" name="sport_find" >  
+            </td>
+            
+            <td width="25%">    
+            <label for="basketball_f"><img src="basketball.png" class="sports_picture" width="50%";><br>Basketball</label> <br/>    
+			<input type="checkbox" value="basketball" data-role="none" id="basketball_f" name="sport_find">
+            
+            </td>
+			<td width="25%">
+            <label for="football_f"> <img src="football.png" class="sports_picture"  width="50%";><br/>Football</label><br/>
+            <input type="checkbox" value="football" data-role="none" id="football_f" name="sport_find"> 
+            </td>            
+            <td width="25%"> 
+            <label for="pingpong_f"><img src="pingpong.png" class="sports_picture"  width="50%";><br/>Pingpong</label><br/>
+			<input type="checkbox" value="pingpong" data-role="none" id="pingpong_f" name="sport_find"> </td>
+        
+        </tr>
+        <tr>
+        
+        
+        	<td width="25%"> 
+            <label for ="tennis_f" > <img src="tennis.png" class="sports_picture"  width="50%";><br/>Tennis</label>    <br/>
+            <input type="checkbox" data-mini="true" data-role="none" value="tennis" id="tennis_f" name="sport_find">         
+            </td>
+            
+            <td width="25%">    
+            <label for="cycling_f"><img src="cycling.png" class="sports_picture" width="50%";><br>Cycling</label> <br/>    
+			<input type="checkbox" value="cycling" data-role="none" id="cycling_f" name="sport_find">
+            
+            </td>
+			<td width="25%">
+            <label for="soccer_f"><img src="soccer.png" class="sports_picture" width="50%";><br/>Soccer</label><br/>
+            <input type="checkbox" value="soccer" data-role="none" id="soccer_f" name="sport_find">
+            </td>            
+            <td width="25%"> 
+            <label for="cricket_f"><img src="cricket.png" class="sports_picture" width="50%";><br/>Cricket</label><br/>
+			<input type="checkbox" value="cricket" data-role="none" id="cricket_f" name="sport_find"> 
+            </td>
+        
+        
+        </tr>
+        <tr>
+        
+        	<td width="25%"> 
+            <label for ="running"><img src="running.png" class="sports_picture" width="50%";><br/>Running</label><br/>
+            <input type="checkbox" data-mini="true" data-role="none" value="running" id="running" name="sport_find">   
+            </td>
+            
+            <td width="25%">    
+            <label for="pool"><img src="pool.png" class="sports_picture" width="50%";><br>Pool</label> <br/>    
+			<input type="checkbox" data-mini="true" data-role="none" value="pool" id="pool" name="sport_find">
+            
+            </td>
+			<td width="25%">
+            <label for="vollyball"><img src="vollyball.png" class="sports_picture" width="50%";><br/>Vollyball</label><br/>
+            <input type="checkbox" data-mini="true" data-role="none" value="vollyball" id="vollyball" name="sport_find"> 
+            </td>            
+            <td width="25%"> <br/>
+            <label ><img src="more.png" class="sports_picture" width="50%";><br/></label><br/>
+            <button type="button" id="allChecked" onClick="selectAllDels()" width="1px" > select <br/>all/none</button>
+            
+			 </td>
+             
+        </tr>
+        
+        <tr style="text-align:left">
+        	<td colspan="4" width="100%" style="text-align:left">
+            <br><img src="date_time.png" width="8%" class="picture" >  
+			<span class="font_date_time" style="font-size:1.2em ">Date and Time</span> 
+            </td>
+            <br/>
+        	
+        </tr>
+        
+        <tr>
+        <td colspan="4" width="25%">
+            <span class="date" >	
+			<input type="date" name="date_event" id="date_event" ;>
+			</span>
+        </td>
+        
+        <tr style="text-align:left; font-size:1.2em">        
+        <td colspan="2" >
+        <span>Start after:</span>
+        </td>
+        <td colspan="2"  >
+        <span>End before:</span>
+        </td>
+        </tr>
+        
+        <tr>        
+        <td colspan="2" width="20%">
+        <input type="time" name="time_start" />
+        </td>
+        <td colspan="2"  width="50%">
+        <input type="time" name="time_end" />
+        </td>
+        </tr>
+        <tr>
+        <td colspan="4" style="text-align:right">
+        <button type="reset" data-inline="true"  >reset</button>
+        <button type="submit" data-inline="true"  >submit</button>
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>
+        <div data-role="footer" data-position="fixed" data-id="footernav"
 			data-theme="c">
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" class="ui-btn-active ui-state-persist"
-							data-icon="home">Find Events</a></li>
-					<li><a href="#create_index" data-icon="arrow-r">Create Events</a></li>
-					<li><a href="#friend_index" data-icon="home">Friends</a></li>
-					<li><a href="#login_index" data-icon="home">Profile</a></li>
+					<li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Find Events</a></li>
+					<li><a href="#create_index" data-icon="home">Create Events</a></li>
+					<li><a href="#recnet_index" data-icon="home">Recent Events</a></li>
+					<li><a href="#profile_index" data-icon="home">Profile</a></li>
 				</ul>
 			</div>
 		</div>
-	</div>
+</div>
 
 	<div data-role="page" id="create_index">
-		<div data-role="header" data-position="fixed" data-id="headernav"
-			data-theme="b">
-			<h1>Create an Event</h1>
-
-		</div>
-		<div data-role="header" data-id="headernav" data-theme="c">
-			<h1>Events type</h1>
-			<a href="#" data-role="button" class="ui-btn-right">more...</a>
-
-		</div>
-
-		<div data-role="content">
-
-			<a href="#find_index" data-role="button" data-inline="true">Badminton</a>
-			<a href="#find_index" data-role="button" data-inline="true">Basketball</a>
-			<a href="#find_index" data-role="button" data-inline="true">Football</a>
-			<a href="#find_index" data-role="button" data-inline="true">Rugby</a>
-			<a href="#find_index" data-role="button" data-inline="true">Table Tennis</a>
-			<a href="#find_index" data-role="button" data-inline="true">Tennis</a>
-			<a href="#find_index" data-role="button" data-inline="true">Cycling</a>
-			<a href="#find_index" data-role="button" data-inline="true">Squash</a>
-			<a href="#find_index" data-role="button" data-inline="true">Cricket</a>
-			<br> <br>
-			<a> Time and date</a>
-			<div data-role="content">
-				<form method="post" action="create_process.php">
-					<div data-role="fieldcontain">
-						<label for="name_event">Events name</label>
-						<input type="text" name="name_event" id="name_event"
-							placeholder="Giving an event name..">
-						<br>
-						<label for="date_event">Date：</label>
-						<input type="date" name="date_event" id="date_event">
-						<br>                         
-						<label for="time_start">Start Time：</label>
-						<input type="time" name="time" id="time_start">
-						<label for="time_end">End Time：</label>
-						<input type="time" name="time" id="time_end">
-                        <label for="num_participant"> Participants: </label>
-                        <input type="number" name="num_participant" id="num_participant">
-                        <br>
-                     </div>
-					<br>
-					<input type="submit" data-inline="true" value="Create">
-				</form>
-			</div>
-		</div>
-
-		<div data-role="footer" data-position="fixed" data-id="footernav"
-			data-theme="c">
+    <div data-role="header" data-position="fixed" data-id="headernav"
+		data-theme="b">
+		<h1>Create an Event</h1>
+	</div>
+	<div data-role="header" data-id="headernav" data-theme="c">
+		<h1>Events type</h1>			
+	</div>    
+        <div data-role="content" style="text-align:center" style="border:"5px"">
+        <form method="post" action="sport_create.php">
+        <table border="0px" width="100%" style="font-size:0.8em;color:rgb(66,134,245)">
+        <tr>
+        	<td width="25%"> 
+            <label for ="badminton_c"> <img src="badminton.png" class="sports_picture" width="50%";><br/>Badminton</label>    <br/>
+            <input type="radio" data-mini="true" data-role="none" value="badminton" id="badminton_c" name="sport_create" >  
+            </td>
+            
+            <td width="25%">    
+            <label for="basketball_c"><img src="basketball.png" class="sports_picture" width="50%";><br>Basketball</label> <br/>    
+			<input type="radio" value="basketball" data-role="none" id="basketball_c" name="sport_create">
+            
+            </td>
+			<td width="25%">
+            <label for="football_c"> <img src="football.png" class="sports_picture"  width="50%";><br/>Football</label><br/>
+            <input type="radio" value="football" data-role="none" id="football_c" name="sport_create"> 
+            </td>            
+            <td width="25%"> 
+            <label for="pingpong_c"><img src="pingpong.png" class="sports_picture"  width="50%";><br/>Pingpong</label><br/>
+			<input type="radio" value="pingpong" data-role="none" id="pingpong_c" name="sport_create"> </td>
+        
+        </tr>
+        <tr>
+        
+        
+        	<td width="25%"> 
+            <label for ="tennis_c" > <img src="tennis.png" class="sports_picture"  width="50%";><br/>Tennis</label>    <br/>
+            <input type="radio" data-mini="true" data-role="none" value="tennis" id="tennis_c" name="sport_create">         
+            </td>
+            
+            <td width="25%">    
+            <label for="cycling_c"><img src="cycling.png" class="sports_picture" width="50%";><br>Cycling</label> <br/>    
+			<input type="radio" value="cycling" data-role="none" id="cycling_c" name="sport_create">
+            
+            </td>
+			<td width="25%">
+            <label for="soccer_c"><img src="soccer.png" class="sports_picture" width="50%";><br/>Soccer</label><br/>
+            <input type="radio" value="soccer" data-role="none" id="soccer_c" name="sport_create">
+            </td>            
+            <td width="25%"> 
+            <label for="cricket_c"><img src="cricket.png" class="sports_picture" width="50%";><br/>Cricket</label><br/>
+			<input type="radio" value="cricket" data-role="none" id="cricket_c" name="sport_create"> 
+            </td>
+        
+        
+        </tr>
+        <tr>        
+        	<td width="25%"> 
+            <label for ="running_c"><img src="running.png" class="sports_picture" width="50%";><br/>Running</label><br/>
+            <input type="radio" data-mini="true" data-role="none" value="running" id="running_c" name="sport_create">   
+            </td>
+            
+            <td width="25%">    
+            <label for="pool_c"><img src="pool.png" class="sports_picture" width="50%";><br>Pool</label> <br/>    
+			<input type="radio" data-mini="true" data-role="none" value="pool" id="pool_c" name="sport_create">
+            
+            </td>
+			<td width="25%">
+            <label for="vollyball_c"><img src="vollyball.png" class="sports_picture" width="50%";><br/>Vollyball</label><br/>
+            <input type="radio" data-mini="true" data-role="none" value="vollyball" id="vollyball_c" name="sport_create"> 
+            </td>            
+            <td width="25%"> <br/>
+            <label ><img src="more.png" class="sports_picture" width="50%";><br/></label><br/>
+            <input type="button" id="allChecked" value="Unselect" onClick="unselectRadio()" style="">             
+			</td>
+             
+        </tr>
+        
+        <tr style="text-align:left; color:black">
+		<td colspan="2"><img src="name.png" class="picture" width="10%" >  
+        <span>Event name:</span>
+		<input type = "text" name ="name_event" class ="font_name" placeholder="Giving an event name..">
+        </td>
+         
+		<td colspan="2"><img src="participant.png" class="picture" width="10%" >
+        <span>Participants:</span>
+		<input type = "text" name ="number_participant" class ="font_name" placeholder="Number of participants..">
+        </td>
+        </tr>
+        <tr style="text-align:left;  color:black">
+        <td colspan="4"><img src="name.png"class="picture" width="5%">
+        <span>Location :</span> 
+		<input type = "text" name ="name_place" class ="font_name" placeholder="Sports Location..">
+        </td>
+		</tr>
+        
+        <tr style="text-align:left">
+        	<td colspan="4" width="100%" style="text-align:left">
+            <br><img src="date_time.png" width="8%" class="picture" >  
+			<span class="font_date_time" style="font-size:1.2em ">Date and Time</span> 
+            </td>
+            <br/>
+        	
+        </tr>
+        
+        <tr>
+        <td colspan="4" width="25%">
+            <span class="date" >	
+			<input type="date" name="date_event" id="date_event" ;>
+			</span>
+        </td>
+        </tr>
+        <tr style="text-align:left; font-size:1.2em">        
+        <td colspan="2" >
+        <span>Start after:</span>
+        </td>
+        <td colspan="2"  >
+        <span>End before:</span>
+        </td>
+        </tr>
+        
+        <tr>        
+        <td colspan="2" width="20%">
+        <input type="time" name="time_start" />
+        </td>
+        <td colspan="2"  width="50%">
+        <input type="time" name="time_end" />
+        </td>
+        </tr>
+        <tr>
+        <td colspan="4" style="text-align:right">
+        <input type="reset" data-inline="true" value="reset" >
+        <input type="submit" data-inline="true" value="Search" >
+        </td>
+        </tr>
+        </table>
+        </form>
+        </div>
+   
+   
+   
+    <div data-role="footer"  data-id="footernav" data-theme="c">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#find_index" data-icon="home">Find Events</a></li>
-					<li><a href="#" class="ui-btn-active ui-state-persist"
-							data-icon="arrow-r">Create Events</a></li>
-					<li><a href="#friend_index" data-icon="home">Friends</a></li>
-					<li><a href="#login_index" data-icon="home">Profile</a></li>
+					<li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Create Events</a></li>
+					<li><a href="#recnet_index" data-icon="home">Recent Events</a></li>
+					<li><a href="#profile_index" data-icon="home">Profile</a></li>
 				</ul>
 			</div>
 		</div>
-	</div>
-
-
-	<div data-role="page" id="friend_index">
+    </div>
+    
+    	<div data-role="page" id="recnet_index">
 		<div data-role="header" data-position="fixed" data-id="headernav"
 			data-theme="b">
 			<h1>Friends</h1>
@@ -146,108 +368,16 @@
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#find_index" data-icon="home">Find Events</a></li>
-					<li><a href="#create_index" data-icon="arrow-r">Create Events</a></li>
+					<li><a href="#create_index" data-icon="home">Create Events</a></li>
 					<li><a href="#" class="ui-btn-active ui-state-persist"
-							data-icon="home">Friends</a></li>
-					<li><a href="#login_index" data-icon="home">Profile</a></li>
+							data-icon="home">Recent Events</a></li>
+					<li><a href="#profile_index" data-icon="home">Profile</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-
-	<div data-role="page" id="login_index">
-		<div data-role="header" data-position="fixed" data-id="headernav"
-			data-theme="b">
-			<h1>TeamUp Login</h1>
-		</div>
-		<div data-role="content">
-			<form method="post" action="login_process.php">
-				<div data-role="fieldcontain">
-					<br> <br> <br>
-					
-					<label for="account">Account：</label>
-					<input type="text" data-inline="true" name="account" id="account">
-					<br> <br>
-				
-					<label for="password">Password：</label>
-					<input type="password" data-inline="true" name="password"
-						id="password">
-					<br> <br>
-				</div>
-				<a href="#find_index" data-role="button" data-inline="true">submit</a>
-				<a href="#register_index" data-role="button" data-inline="true">register</a>
-				<input type="reset" data-inline="true" value="reset">
-			</form>
-		</div>
-
-		<div data-role="footer" data-position="fixed" data-id="footernav"
-			data-theme="c">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#find_index" data-icon="home">Find Events</a></li>
-					<li><a href="#create_index" data-icon="arrow-r">Create Events</a></li>
-					<li><a href="#friend_index" data-icon="home">Friends</a></li>
-					<li><a href="#" class="ui-btn-active ui-state-persist"
-							data-icon="home">Profile</a></li>
-				</ul>
-			</div>
-		</div>
-
-	</div>
-
-	
-
-	<div data-role="page" id="register_index">
-		<div data-role="header" data-theme="b">
-			<h1>TeamUp Profile</h1>
-		</div>
-		<div data-role="content">
-			<form method="post" action="demoform.asp">
-				<div data-role="fieldcontain">
-					<label for="firstname">First Name：</label>
-					<input type="text" name="firstname" id="firstname">
-					<br> <br>
-					<label for="lastname">Last Name：</label>
-					<input type="text" name="lastname" id="lastname">
-					<br> <br>
-					<legend>gender：</legend>
-					<label for="male">male</label>
-					<input type="radio" name="gender" id="male" value="male">
-					<label for="female">female</label>
-					<input type="radio" name="gender" id="female" value="female">
-					<br> <br> <br>
-					<label for="info">personal Introducation：</label>
-					<textarea name="addinfo" id="info"></textarea>
-					<br> <br>
-					<label for="sportstype">Favorite Sports: </label>
-					<select name="sportstype" id="sportstype" multiple="multiple"
-						data-native-menu="false">
-						<option value="soccer">soccer</option>
-						<option value="football">football</option>
-						<option value="rugby">rugby</option>
-						<option value="rugby">tennis</option>
-						<option value="rugby">table tennis</option>
-						<option value="rugby">badminton</option>
-						<option value="rugby">basketball</option>
-						<option value="rugby">volleyball</option>
-						<option value="rugby">ice hockey</option>
-						<option value="rugby">squash</option>
-						<option value="rugby">hockey ball</option>
-						<option value="rugby">golf</option>
-					</select> <br> <br>
-					<legend>Occupation：</legend>
-					<label for="student">student</label>
-					<input type="radio" name="occupation" id="student" value="student">
-					<label for="staff">staff</label>
-					<input type="radio" name="occupation" id="staff" value="staff">
-				</div>
-				<br> <br>
-				<a href="#login_index" data-role="button" data-inline="true">Submit</a>
-				<input type="reset" data-inline="true" value="reset">
-			</form>
-		</div>
-	</div>
-
+    
+    
 </body>
 </html>
 
