@@ -9,6 +9,10 @@
 	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <meta charset="utf-8">
 <style>
+html,body{
+    height:100%;
+    width:100%;
+}
 .sports_picture{
 	max-width: 80px;
 	}
@@ -17,6 +21,23 @@
 	}
 </style>
 <script type="text/javascript" language="javascript"> 
+$(function(){
+        $("#find_index").on("click",
+        function() {
+                $.mobile.changePage("index_phone.html", {
+                        transition: "slide",
+
+                });
+        });
+         $("#slide2").on("click",
+        function() {
+                $.mobile.changePage("#slide1", {
+                        transition: "slide",
+                        reverse: true,
+
+                });
+        });
+       }); 
 function selectAllDels() 
 { 
 	var allCheckBoxs = document.getElementsByName("sport_find"); 
@@ -62,38 +83,41 @@ function unselectRadio()
 			}
 		}
 	}
+
 </script> 
 
 </head>
 <body >
 <div data-role="page" id="find_index" >
-		<div class="ui-btn-active" data-role="header">
+		<div  data-role="header" data-position="fixed" data-theme="b" >
 			<h1>Find Events</h1>
 		</div>
 
-		<div class="ui-body-c" data-role="header">
-			<h1>Events type</h1>			
+		<div  data-role="header" data-theme="c"> 
+			<h1>Events type</h1>
+		
 		</div>
-        <div data-role="content" style="text-align:center">
-        <form method="post" action="sport_find.php">
-        <table border="0px" width="100%" style="font-size:0.8em;color:rgb(66,134,245)">
+        <div data-role="content" style="text-align:center"  style:"">
+		
+        <form >
+        <table border="0px"   style="font-size:1em;color:rgb(66,134,245)" width ="100%" >
         <tr>
-        	<td width="25%"> 
-            <label for ="badminton_f"> <img src="badminton.png" class="sports_picture" width="50%";><br/>Badminton</label>    <br/>
+        	<td width="25%" > 
+            <label for ="badminton_f"> <img src="badminton.png" class="sports_picture" width="100%";><br/>Badminton</label>    <br/>
             <input type="checkbox" data-mini="true" data-role="none" value="badminton" id="badminton_f" name="sport_find" >  
             </td>
             
             <td width="25%">    
-            <label for="basketball_f"><img src="basketball.png" class="sports_picture" width="50%";><br>Basketball</label> <br/>    
+            <label for="basketball_f"><img src="basketball.png" class="sports_picture" width="100%";><br>Basketball</label> <br/>    
 			<input type="checkbox" value="basketball" data-role="none" id="basketball_f" name="sport_find">
             
             </td>
 			<td width="25%">
-            <label for="football_f"> <img src="football.png" class="sports_picture"  width="50%";><br/>Football</label><br/>
+            <label for="football_f"> <img src="football.png" class="sports_picture"  width="100%";><br/>Football</label><br/>
             <input type="checkbox" value="football" data-role="none" id="football_f" name="sport_find"> 
             </td>            
             <td width="25%"> 
-            <label for="pingpong_f"><img src="pingpong.png" class="sports_picture"  width="50%";><br/>Pingpong</label><br/>
+            <label for="pingpong_f"><img src="pingpong.png" class="sports_picture"  width="100%";><br/>Pingpong</label><br/>
 			<input type="checkbox" value="pingpong" data-role="none" id="pingpong_f" name="sport_find"> </td>
         
         </tr>
@@ -101,21 +125,21 @@ function unselectRadio()
         
         
         	<td width="25%"> 
-            <label for ="tennis_f" > <img src="tennis.png" class="sports_picture"  width="50%";><br/>Tennis</label>    <br/>
+            <label for ="tennis_f" > <img src="tennis.png" class="sports_picture"  width="100%";><br/>Tennis</label>    <br/>
             <input type="checkbox" data-mini="true" data-role="none" value="tennis" id="tennis_f" name="sport_find">         
             </td>
             
             <td width="25%">    
-            <label for="cycling_f"><img src="cycling.png" class="sports_picture" width="50%";><br>Cycling</label> <br/>    
+            <label for="cycling_f"><img src="cycling.png" class="sports_picture" width="100%";><br>Cycling</label> <br/>    
 			<input type="checkbox" value="cycling" data-role="none" id="cycling_f" name="sport_find">
             
             </td>
 			<td width="25%">
-            <label for="soccer_f"><img src="soccer.png" class="sports_picture" width="50%";><br/>Soccer</label><br/>
+            <label for="soccer_f"><img src="soccer.png" class="sports_picture" width="100%";><br/>Soccer</label><br/>
             <input type="checkbox" value="soccer" data-role="none" id="soccer_f" name="sport_find">
             </td>            
             <td width="25%"> 
-            <label for="cricket_f"><img src="cricket.png" class="sports_picture" width="50%";><br/>Cricket</label><br/>
+            <label for="cricket_f"><img src="cricket.png" class="sports_picture" width="100%";><br/>Cricket</label><br/>
 			<input type="checkbox" value="cricket" data-role="none" id="cricket_f" name="sport_find"> 
             </td>
         
@@ -124,22 +148,25 @@ function unselectRadio()
         <tr>
         
         	<td width="25%"> 
-            <label for ="running"><img src="running.png" class="sports_picture" width="50%";><br/>Running</label><br/>
+            <label for ="running"><img src="running.png" class="sports_picture" width="100%";><br/>Running</label><br/>
             <input type="checkbox" data-mini="true" data-role="none" value="running" id="running" name="sport_find">   
             </td>
             
             <td width="25%">    
-            <label for="pool"><img src="pool.png" class="sports_picture" width="50%";><br>Pool</label> <br/>    
+            <label for="pool"><img src="pool.png" class="sports_picture" width="100%";><br>Pool</label> <br/>    
 			<input type="checkbox" data-mini="true" data-role="none" value="pool" id="pool" name="sport_find">
             
             </td>
 			<td width="25%">
-            <label for="vollyball"><img src="vollyball.png" class="sports_picture" width="50%";><br/>Vollyball</label><br/>
+            <label for="vollyball"><img src="vollyball.png" class="sports_picture" width="100%";><br/>Vollyball</label><br/>
             <input type="checkbox" data-mini="true" data-role="none" value="vollyball" id="vollyball" name="sport_find"> 
             </td>            
             <td width="25%"> <br/>
-            <label ><img src="more.png" class="sports_picture" width="50%";><br/></label><br/>
-            <button type="button" id="allChecked" onClick="selectAllDels()" width="1px" > select <br/>all/none</button>
+            <label ><a href="#popupBasic" data-rel="popup">More...</a> 
+			<div data-role="popup" id="popupBasic"> 
+			<p> There are more sports coming soon.<p> 
+			</div><br/></label><br/>
+            <button data-mini="true" type="button" id="allChecked" onClick="selectAllDels()" width="1px" > select <br/>all/none</button>
             
 			 </td>
              
@@ -180,15 +207,14 @@ function unselectRadio()
         </tr>
         <tr>
         <td colspan="4" style="text-align:right">
-        <button type="reset" data-inline="true"  >reset</button>
-        <button type="submit" data-inline="true"  >submit</button>
+        <button type="reset" data-inline="true" data-mini="true" >reset</button>
+        <button type="submit" data-inline="true" data-mini="true" data-theme="b">submit</button>
         </td>
         </tr>
         </table>
         </form>
         </div>
-        <div data-role="footer" data-position="fixed" data-id="footernav"
-			data-theme="c">
+        <div data-role="footer"  data-id="footernav" data-theme="c">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Find Events</a></li>
@@ -201,8 +227,7 @@ function unselectRadio()
 </div>
 
 	<div data-role="page" id="create_index">
-    <div data-role="header" data-position="fixed" data-id="headernav"
-		data-theme="b">
+    <div data-role="header"  data-id="headernav" data-position="fixed" data-theme="b">
 		<h1>Create an Event</h1>
 	</div>
 	<div data-role="header" data-id="headernav" data-theme="c">
@@ -271,8 +296,12 @@ function unselectRadio()
             <input type="radio" data-mini="true" data-role="none" value="vollyball" id="vollyball_c" name="sport_create"> 
             </td>            
             <td width="25%"> <br/>
-            <label ><img src="more.png" class="sports_picture" width="50%";><br/></label><br/>
-            <input type="button" id="allChecked" value="Unselect" onClick="unselectRadio()" style="">             
+            <label >
+			<a href="#popupBasic" data-rel="popup">More...</a> 
+			<div data-role="popup" id="popupBasic"> 
+			<p> There are more sports coming soon.<p> 
+			</div> <br/></label><br/>
+            <input type="button" id="allChecked" value="Unselect" onClick="unselectRadio()" data-mini="true" >             
 			</td>
              
         </tr>
@@ -330,8 +359,8 @@ function unselectRadio()
         </tr>
         <tr>
         <td colspan="4" style="text-align:right">
-        <input type="reset" data-inline="true" value="reset" >
-        <input type="submit" data-inline="true" value="Search" >
+        <input type="reset" data-inline="true" data-mini="true"  value="reset" >
+        <input type="submit" data-inline="true"  data-mini="true"  value="Search" data-theme="b">
         </td>
         </tr>
         </table>
