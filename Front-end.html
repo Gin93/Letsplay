@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,73 +14,111 @@ html,body{
     height:100%;
     width:100%;
 }
+
+      #map {
+        height:400px;
+    width:100%;
+      }
 .sports_picture{
 	max-width: 80px;
 	}
 .picture{
 	max-width:40px;	
 	}
+	#locationField, #controls {
+        position: relative;
+        width: 100%;
+      }
+	  #autocomplete {  
+        width: 99%;
+      }
+
 </style>
+
+	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOfSTwM1cDJD6mP_U1az9dsfR-mDUvE4o&signed_in=true&callback=initMap"
+        async defer></script>
+
+<script>
+		function initAutocomplete() {
+		  // Create the autocomplete object, restricting the search to geographical
+		  // location types.
+		  
+		  autocomplete = new google.maps.places.Autocomplete(
+			  /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+			  {types: ['geocode']});
+
+		  // When the user selects an address from the dropdown, populate the address
+		  // fields in the form.
+		  autocomplete.addListener('place_changed', fillInAddress);
+		}		
+		function geolocate() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var geolocation = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+					var circle = new google.maps.Circle({
+						center: geolocation,
+						radius: position.coords.accuracy
+					});
+					autocomplete.setBounds(circle.getBounds());
+				});
+			}
+		}			
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOfSTwM1cDJD6mP_U1az9dsfR-mDUvE4o&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
+		
+		
 <script type="text/javascript" language="javascript"> 
-$(function(){
-        $("#find_index").on("click",
-        function() {
-                $.mobile.changePage("index_phone.html", {
-                        transition: "slide",
-
-                });
-        });
-         $("#slide2").on("click",
-        function() {
-                $.mobile.changePage("#slide1", {
-                        transition: "slide",
-                        reverse: true,
-
-                });
-        });
-       }); 
+function popMap(){
+	
+	window.open('map.html','_blank','width=600 height=400');
+	
+}
 function selectAllDels() 
 { 
-	var allCheckBoxs = document.getElementsByName("sport_find"); 
+	var allradios = document.getElementsByName("sport_find"); 
 	var desc = document.getElementById("allChecked"); 
 	var selectOrUnselect=false; 
-	for(var i = 0; i < allCheckBoxs.length; i ++ ) 
+	for(var i = 0; i < allradios.length; i ++ ) 
 	{ 
-		if(allCheckBoxs[i].checked){ 
+		if(allradios[i].checked){ 
 			selectOrUnselect=true; 
 			break; 
 		} 
 	}
 	if (selectOrUnselect) 
 	{ 
-		_allUnchecked(allCheckBoxs); 
+		_allUnchecked(allradios); 
 		}
 		else 
 		{ 
-			_allchecked(allCheckBoxs); 
+			_allchecked(allradios); 
 			} 
 } 
-function _allchecked(allCheckBoxs){ 
-for(var i = 0; i < allCheckBoxs.length; i ++ ) 
+function _allchecked(allradios){ 
+for(var i = 0; i < allradios.length; i ++ ) 
 { 
-allCheckBoxs[i].checked = true; 
+allradios[i].checked = true; 
 } 
 } 
-function _allUnchecked(allCheckBoxs){ 
-for(var i = 0; i < allCheckBoxs.length; i ++ ) 
+function _allUnchecked(allradios){ 
+for(var i = 0; i < allradios.length; i ++ ) 
 { 
-allCheckBoxs[i].checked = false; 
+allradios[i].checked = false; 
 } 
 } 
 function unselectRadio()
 {
-	var allCheckBoxs = document.getElementsByName("sport_create");
+	var allradios = document.getElementsByName("sport_create");
 	var desc = document.getElementById("allChecked");
 	var selectOrUnselect=false;
-	for(var i=0;i < allCheckBoxs.length; i ++)
+	for(var i=0;i < allradios.length; i ++)
 	{
-		if(allCheckBoxs[i].checked){
-			allCheckBoxs[i].checked = false; 
+		if(allradios[i].checked){
+			allradios[i].checked = false; 
 			}
 		}
 	}
@@ -87,38 +126,39 @@ function unselectRadio()
 </script> 
 
 </head>
-<body >
+<body>
 <div data-role="page" id="find_index" >
-		<div  data-role="header" data-position="fixed" data-theme="b" >
+		<title>TeamUp ANU</title>
+		<div  data-role="header" data-tap-toggle="false" data-position="fixed" data-theme="b" >
 			<h1>Find Events</h1>
 		</div>
 
-		<div  data-role="header" data-theme="c"> 
+		<!-- <div  data-role="header" data-theme="c"> 
 			<h1>Events type</h1>
 		
-		</div>
+		</div> -->
         <div data-role="content" style="text-align:center"  style:"">
 		
-        <form >
+        <form method="post" action="sport_find.php" >
         <table border="0px"   style="font-size:1em;color:rgb(66,134,245)" width ="100%" >
         <tr>
         	<td width="25%" > 
             <label for ="badminton_f"> <img src="badminton.png" class="sports_picture" width="100%";><br/>Badminton</label>    <br/>
-            <input type="checkbox" data-mini="true" data-role="none" value="badminton" id="badminton_f" name="sport_find" >  
+            <input type="radio" data-mini="true" data-role="none" value="badminton" id="badminton_f" name="sport_find" >  
             </td>
             
             <td width="25%">    
             <label for="basketball_f"><img src="basketball.png" class="sports_picture" width="100%";><br>Basketball</label> <br/>    
-			<input type="checkbox" value="basketball" data-role="none" id="basketball_f" name="sport_find">
+			<input type="radio" value="basketball" data-role="none" id="basketball_f" name="sport_find">
             
             </td>
 			<td width="25%">
             <label for="football_f"> <img src="football.png" class="sports_picture"  width="100%";><br/>Football</label><br/>
-            <input type="checkbox" value="football" data-role="none" id="football_f" name="sport_find"> 
+            <input type="radio" value="football" data-role="none" id="football_f" name="sport_find"> 
             </td>            
             <td width="25%"> 
             <label for="pingpong_f"><img src="pingpong.png" class="sports_picture"  width="100%";><br/>Pingpong</label><br/>
-			<input type="checkbox" value="pingpong" data-role="none" id="pingpong_f" name="sport_find"> </td>
+			<input type="radio" value="pingpong" data-role="none" id="pingpong_f" name="sport_find"> </td>
         
         </tr>
         <tr>
@@ -126,21 +166,21 @@ function unselectRadio()
         
         	<td width="25%"> 
             <label for ="tennis_f" > <img src="tennis.png" class="sports_picture"  width="100%";><br/>Tennis</label>    <br/>
-            <input type="checkbox" data-mini="true" data-role="none" value="tennis" id="tennis_f" name="sport_find">         
+            <input type="radio" data-mini="true" data-role="none" value="tennis" id="tennis_f" name="sport_find">         
             </td>
             
             <td width="25%">    
             <label for="cycling_f"><img src="cycling.png" class="sports_picture" width="100%";><br>Cycling</label> <br/>    
-			<input type="checkbox" value="cycling" data-role="none" id="cycling_f" name="sport_find">
+			<input type="radio" value="cycling" data-role="none" id="cycling_f" name="sport_find">
             
             </td>
 			<td width="25%">
             <label for="soccer_f"><img src="soccer.png" class="sports_picture" width="100%";><br/>Soccer</label><br/>
-            <input type="checkbox" value="soccer" data-role="none" id="soccer_f" name="sport_find">
+            <input type="radio" value="soccer" data-role="none" id="soccer_f" name="sport_find">
             </td>            
             <td width="25%"> 
             <label for="cricket_f"><img src="cricket.png" class="sports_picture" width="100%";><br/>Cricket</label><br/>
-			<input type="checkbox" value="cricket" data-role="none" id="cricket_f" name="sport_find"> 
+			<input type="radio" value="cricket" data-role="none" id="cricket_f" name="sport_find"> 
             </td>
         
         
@@ -149,17 +189,17 @@ function unselectRadio()
         
         	<td width="25%"> 
             <label for ="running"><img src="running.png" class="sports_picture" width="100%";><br/>Running</label><br/>
-            <input type="checkbox" data-mini="true" data-role="none" value="running" id="running" name="sport_find">   
+            <input type="radio" data-mini="true" data-role="none" value="running" id="running" name="sport_find">   
             </td>
             
             <td width="25%">    
             <label for="pool"><img src="pool.png" class="sports_picture" width="100%";><br>Pool</label> <br/>    
-			<input type="checkbox" data-mini="true" data-role="none" value="pool" id="pool" name="sport_find">
+			<input type="radio" data-mini="true" data-role="none" value="pool" id="pool" name="sport_find">
             
             </td>
 			<td width="25%">
             <label for="vollyball"><img src="vollyball.png" class="sports_picture" width="100%";><br/>Vollyball</label><br/>
-            <input type="checkbox" data-mini="true" data-role="none" value="vollyball" id="vollyball" name="sport_find"> 
+            <input type="radio" data-mini="true" data-role="none" value="vollyball" id="vollyball" name="sport_find"> 
             </td>            
             <td width="25%"> <br/>
             <label ><a href="#popupBasic" data-rel="popup">More...</a> 
@@ -208,13 +248,13 @@ function unselectRadio()
         <tr>
         <td colspan="4" style="text-align:right">
         <button type="reset" data-inline="true" data-mini="true" >reset</button>
-        <button type="submit" data-inline="true" data-mini="true" data-theme="b">submit</button>
+        <button type="submit" data-inline="true" data-mini="true" data-theme="b">search</button>
         </td>
         </tr>
         </table>
         </form>
         </div>
-        <div data-role="footer"  data-id="footernav" data-theme="c">
+        <div data-role="footer"  data-id="footernav" data-tap-toggle="false" data-position="fixed"  data-theme="c">
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">Find Events</a></li>
@@ -226,13 +266,13 @@ function unselectRadio()
 		</div>
 </div>
 
-	<div data-role="page" id="create_index">
-    <div data-role="header"  data-id="headernav" data-position="fixed" data-theme="b">
+	<div data-role="page" id="create_index" >
+    <div data-role="header" data-tap-toggle="false" data-position="fixed" data-id="headernav"  data-theme="b">
 		<h1>Create an Event</h1>
 	</div>
-	<div data-role="header" data-id="headernav" data-theme="c">
+	<!-- <div data-role="header" data-id="headernav" data-theme="c">
 		<h1>Events type</h1>			
-	</div>    
+	</div>  -->   
         <div data-role="content" style="text-align:center" style="border:"5px"">
         <form method="post" action="sport_create.php">
         <table border="0px" width="100%" style="font-size:0.8em;color:rgb(66,134,245)">
@@ -318,11 +358,52 @@ function unselectRadio()
         </td>
         </tr>
         <tr style="text-align:left;  color:black">
-        <td colspan="4"><img src="name.png"class="picture" width="5%">
-        <span>Location :</span> 
-		<input type = "text" name ="name_place" class ="font_name" placeholder="Sports Location..">
+        <td colspan="3"><img src="name.png"class="picture" width="5%">
+        <span id="locationField">Location : </span> 
+		<input id="autocomplete" type = "textbox" value="Canberra" name ="name_place" class ="font_name" onFocus="geolocate();initMap()">	
         </td>
+		<td>		<input id="locate" type="button" value="locate" width="50px"></td>
 		</tr>
+		<tr>
+		<td colspan="4">
+		
+		<div id="map" ></div>
+		<script>
+function initMap() {
+
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: {lat: -35.278957, lng:  149.123775}
+  });
+  var geocoder = new google.maps.Geocoder();
+
+  document.getElementById('locate').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('autocomplete').value;
+  
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+	
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+    </script>
+	</td>
+		</tr>
+		
         
         <tr style="text-align:left">
         	<td colspan="4" width="100%" style="text-align:left">
@@ -360,7 +441,7 @@ function unselectRadio()
         <tr>
         <td colspan="4" style="text-align:right">
         <input type="reset" data-inline="true" data-mini="true"  value="reset" >
-        <input type="submit" data-inline="true"  data-mini="true"  value="Search" data-theme="b">
+        <input type="submit" data-inline="true"  data-mini="true"  value="submit" data-theme="b">
         </td>
         </tr>
         </table>
@@ -369,7 +450,8 @@ function unselectRadio()
    
    
    
-    <div data-role="footer"  data-id="footernav" data-theme="c">
+    <div data-role="footer" data-tap-toggle="false" data-position="fixed"  data-id="footernav" data-theme="c">
+	
 			<div data-role="navbar">
 				<ul>
 					<li><a href="#find_index" data-icon="home">Find Events</a></li>
@@ -378,7 +460,7 @@ function unselectRadio()
 					<li><a href="#profile_index" data-icon="home">Profile</a></li>
 				</ul>
 			</div>
-		</div>
+	</div>
     </div>
     
     	<div data-role="page" id="recnet_index">
@@ -392,7 +474,7 @@ function unselectRadio()
 			
 		</div>
 
-		<div data-role="footer" data-position="fixed" data-id="footernav"
+		<div data-role="footer" data-tap-toggle="false" data-position="fixed" data-id="footernav"
 			data-theme="c">
 			<div data-role="navbar">
 				<ul>
