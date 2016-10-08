@@ -122,6 +122,18 @@ function unselectRadio()
 			}
 		}
 	}
+function unselectFind()
+{
+	var allradios = document.getElementsByName("sport_find");
+	var desc = document.getElementById("allChecked");
+	var selectOrUnselect=false;
+	for(var i=0;i < allradios.length; i ++)
+	{
+		if(allradios[i].checked){
+			allradios[i].checked = false; 
+			}
+		}
+	}
 
 </script> 
 
@@ -206,7 +218,7 @@ function unselectRadio()
 			<div data-role="popup" id="popupBasic"> 
 			<p> There are more sports coming soon.<p> 
 			</div><br/></label><br/>
-            <button data-mini="true" type="button" id="allChecked" onClick="selectAllDels()" width="1px" > select <br/>all/none</button>
+            <button data-mini="true" type="button" id="allChecked" onClick="unselectFind()" width="1px" > Unselect</button>
             
 			 </td>
              
