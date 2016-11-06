@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOfSTwM1cDJD6mP_U1az9dsfR-mDUvE4o&signed_in=true&callback=initMap"></script>
+<script src="purl.js"></script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<script>
+
+function initMap() {
+
+
+  var map = new google.maps.Map(document.getElementById('map_result'), {
+    zoom: 15,
+    center: {lat: -35.278957, lng:  149.123775}
+  });
+  var geocoder = new google.maps.Geocoder();
+  var address=$.url().param('data');
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+	
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });  
+}
+
+
+</script>
+
+</script>
+
+
+
+
+<title>map</title>
+</head>
+
+<body onload = "initMap()">
+<span>If there is no map display, please refresh.</span>
+<div id = "map_result" style = "width:100%; height:800px;"></div>
+
+</body>
+</html>
